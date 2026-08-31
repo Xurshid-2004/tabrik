@@ -1,0 +1,5 @@
+node_modules/
+dist/
+_keraksiz/
+*.local
+.DS_Store

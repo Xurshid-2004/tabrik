@@ -1,0 +1,48 @@
+.welcome-shower {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 0.7s ease;
+  /* isolate this layer so the falling particles never trigger
+     layout/paint work on the rest of the page */
+  contain: layout style paint;
+}
+
+.welcome-shower.fading {
+  opacity: 0;
+}
+
+.shower-particle {
+  position: absolute;
+  top: -40px;
+  will-change: transform;
+  animation-name: shower-fall;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+
+.shower-particle.confetti {
+  border-radius: 2px;
+}
+
+.shower-particle.flower {
+  line-height: 1;
+}
+
+@keyframes shower-fall {
+  0% {
+    transform: translate3d(0, -40px, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(var(--drift, 0px), 110vh, 0) rotate(540deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .welcome-shower {
+    display: none;
+  }
+}

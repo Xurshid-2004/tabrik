@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mustaqillik bayrami muborak! Temiryo'lchilar uchun bayram tabrigi.">
+    <meta name="theme-color" content="#020914">
+
+    <title>Mustaqillik Ekspressi 🇺🇿</title>
+
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================================
+           RESET & GLOBALS
+        ================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            overflow: hidden;
+            font-family: 'Outfit', sans-serif;
+            color: #ffffff;
+            background: linear-gradient(180deg, #020914 0%, #06182c 45%, #01060b 100%);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ================================
+           MAIN WRAPPER
+        ================================= */
+        .app {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 600px;
+            overflow: hidden;
+        }
+
+        /* ================================
+           SKY GLOW & AMBIANCE
+        ================================= */
+        .sky-glow {
+            position: absolute;
+            width: 80vw;
+            height: 60vh;
+            left: 50%;
+            top: 0%;
+            transform: translateX(-50%);
+            background: radial-gradient(circle, rgba(30, 117, 170, 0.25), transparent 60%);
+            pointer-events: none;
+            mix-blend-mode: screen;
+        }
+
+        /* ================================
+           STARS
+        ================================= */
+        .stars {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 4px #fff, 0 0 8px rgba(255,255,255,0.8);
+            animation: twinkle var(--duration, 2s) infinite alternate ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.1; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* ================================
+           HEADER (GLASSMORPHISM)
+        ================================= */
+        .header {
+            position: absolute;
+            top: 30px;
+            left: 5%;
+            right: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 20;
+            padding: 12px 24px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            animation: fadeDown 1s ease 0.2s backwards;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .brand-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 26px;
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.1);
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-title {
+            font-size: 18px;
+            font-weight: 900;
+            letter-spacing: 2.5px;
+            background: linear-gradient(90deg, #fff, #e0e0e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-subtitle {
+            margin-top: 2px;
+            color: #e4bd58;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .date {
+            padding: 10px 20px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* ================================
+           HERO SECTION
+        ================================= */
+        .hero {
+            position: absolute;
+            left: 50%;
+            top: 20%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+            z-index: 15;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 22px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: fadeDown 1s ease 0.4s backwards;
+        }
+
+        .hero h1 {
+            margin-top: 30px;
+            font-size: clamp(48px, 8vw, 100px);
+            line-height: 1;
+            letter-spacing: -2px;
+            font-weight: 900;
+            text-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            animation: fadeUp 1s ease 0.6s backwards;
+        }
+
+        .hero h1 span {
+            display: block;
+            margin-top: 5px;
+            background: linear-gradient(90deg, #ffe18a, #ffffff, #d89f2a, #ffe18a);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 6s linear infinite;
+        }
+
+        .subtitle {
+            margin-top: 25px;
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 18px;
+            font-weight: 300;
+            line-height: 1.6;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeUp 1s ease 0.8s backwards;
+        }
+
+        /* ================================
+           CALL TO ACTION BUTTON
+        ================================= */
+        .open-button {
+            position: relative;
+            margin-top: 40px;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #ffd86e, #c8942c);
+            color: #1a150c;
+            font-size: 16px;
+            font-family: inherit;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 15px 35px rgba(212, 163, 52, 0.3), inset 0 2px 0 rgba(255,255,255,0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeUp 1s ease 1s backwards, buttonPulse 3s infinite 2s;
+            overflow: hidden;
+        }
+
+        .open-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+            transform: skewX(-20deg);
+            transition: 0.5s;
+        }
+
+        .open-button:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 20px 50px rgba(255, 207, 78, 0.5), inset 0 2px 0 rgba(255,255,255,0.6);
+            background: linear-gradient(135deg, #ffe79a, #dfa938);
+        }
+
+        .open-button:hover::before {
+            left: 150%;
+        }
+
+        .open-button:active {
+            transform: scale(0.95);
+            box-shadow: 0 10px 20px rgba(212, 163, 52, 0.2);
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% { box-shadow: 0 15px 35px rgba(212, 163, 52, 0.3), inset 0 2px 0 rgba(255,255,255,0.4); }
+            50% { box-shadow: 0 15px 50px rgba(255, 215, 90, 0.6), inset 0 2px 0 rgba(255,255,255,0.4); }
+        }
+
+        /* ================================
+           MOON & SCENERY
+        ================================= */
+        .moon {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            right: 8%;
+            top: 8%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #fffef0, #f4dc91);
+            box-shadow: 0 0 80px rgba(255, 225, 142, 0.25), inset -10px -10px 20px rgba(0,0,0,0.1);
+            z-index: 2;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .mountains {
+            position: absolute;
+            bottom: 110px;
+            width: 100%;
+            height: 250px;
+            background:
+                linear-gradient(135deg, transparent 48%, #040b13 49%),
+                linear-gradient(45deg, #071524 48%, transparent 49%);
+            background-size: 400px 250px, 600px 250px;
+            background-position: 0 0, 150px 0;
+            opacity: 0.9;
+            z-index: 3;
+            filter: drop-shadow(0 -10px 20px rgba(0,0,0,0.5));
+        }
+
+        /* ================================
+           TRAIN VIDEO SCENE
+           Haqiqiy lokomotiv videosi — eski CSS-poyezd o'rniga.
+           Qirralari gradient-parda bilan tun manzarasiga singdiriladi.
+        ================================= */
+        .train-scene {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: clamp(260px, 48vh, 480px);
+            z-index: 6;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .train-scene video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 70%;
+            /* Tun sahnasiga moslash uchun yengil rang korreksiyasi */
+            filter: brightness(0.92) contrast(1.06) saturate(1.08);
+        }
+
+        /* Video qirralarini fonga silliq qo'shib yuboruvchi parda */
+        .train-scene::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            background:
+                /* tepadan osmonga singish */
+                linear-gradient(180deg, #01060b 0%, rgba(1, 6, 11, 0.65) 10%, transparent 38%),
+                /* chap va o'ng qirralar */
+                linear-gradient(90deg, rgba(1, 6, 11, 0.85) 0%, transparent 14%, transparent 86%, rgba(1, 6, 11, 0.85) 100%),
+                /* pastki vinyetka */
+                linear-gradient(0deg, rgba(1, 3, 7, 0.7) 0%, transparent 16%);
+        }
+
+        /* Video yuklanmaguncha ko'rinadigan zaxira fon */
+        .train-scene {
+            background: linear-gradient(180deg, #040b13, #010307);
+        }
+
+        /* ================================
+           GOLD PARTICLES
+        ================================= */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #f4d276;
+            box-shadow: 0 0 15px 3px rgba(244,210,118,0.9);
+            animation: floatParticle var(--duration, 6s) ease-in-out infinite;
+            z-index: 10;
+        }
+
+        @keyframes floatParticle {
+            0%, 100% { transform: translateY(0) scale(0.8); opacity: 0.2; }
+            50% { transform: translateY(-50px) scale(1.5); opacity: 1; }
+        }
+
+        /* ================================
+           MODAL & CARD (PREMIUM DESIGN)
+        ================================= */
+        .modal {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(2, 6, 12, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .card {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 50px 45px;
+            border-radius: 30px;
+            text-align: center;
+            background: linear-gradient(145deg, rgba(16, 45, 64, 0.9), rgba(6, 19, 31, 0.95));
+            border: 1px solid rgba(255, 215, 109, 0.2);
+            box-shadow:
+                0 40px 100px rgba(0,0,0,0.8),
+                inset 0 0 0 1px rgba(255,255,255,0.05),
+                0 0 40px rgba(217, 168, 61, 0.1);
+            transform: translateY(50px) scale(0.9);
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .card::-webkit-scrollbar { width: 6px; }
+        .card::-webkit-scrollbar-track { background: transparent; }
+        .card::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
+
+        .modal.active .card {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 25px;
+            width: 44px;
+            height: 44px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.8);
+            font-size: 28px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .close:hover {
+            background: rgba(255,50,50,0.8);
+            color: white;
+            transform: rotate(90deg) scale(1.1);
+            box-shadow: 0 0 15px rgba(255,50,50,0.4);
+        }
+
+        .flag {
+            font-size: 65px;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.4));
+            animation: float 4s infinite ease-in-out;
+            margin-bottom: 10px;
+        }
+
+        .card h2 {
+            margin-top: 10px;
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            background: linear-gradient(90deg, #fff, #ffe392, #fff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+        }
+
+        .gold-line {
+            width: 100px;
+            height: 4px;
+            border-radius: 2px;
+            margin: 25px auto 30px;
+            background: linear-gradient(90deg, transparent, #d9a83d, transparent);
+            box-shadow: 0 2px 10px rgba(217, 168, 61, 0.4);
+        }
+
+        .card p {
+            margin: 18px 0;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            font-size: 17px;
+            font-weight: 300;
+        }
+
+        .card p strong {
+            font-weight: 600;
+            color: #fff;
+            font-size: 19px;
+        }
+
+        .final {
+            display: block;
+            margin-top: 35px;
+            color: #f0c75b;
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1.5;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 10px rgba(240, 199, 91, 0.3);
+        }
+
+        .signature {
+            margin-top: 35px;
+        }
+
+        .signature-note {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+            font-weight: 300;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        .signature-name {
+            display: inline-block;
+            margin-top: 6px;
+            color: #f0c75b;
+            font-size: 19px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 10px rgba(240, 199, 91, 0.35);
+        }
+
+        /* ================================
+           CONFETTI
+        ================================= */
+        #confetti {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 200;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            top: -20px;
+            width: 10px;
+            height: 18px;
+            border-radius: 3px;
+            animation: fall forwards linear;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(900deg) scale(0.8); opacity: 0; }
+        }
+
+        /* ================================
+           ANIMATIONS
+        ================================= */
+        @keyframes shine {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); filter: blur(5px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-30px); filter: blur(5px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        /* ================================
+           REDUCED MOTION (ACCESSIBILITY)
+        ================================= */
+        @media (prefers-reduced-motion: reduce) {
+            .star,
+            .moon,
+            .particle,
+            .hero h1 span,
+            .open-button {
+                animation: none;
+            }
+        }
+
+        /* ================================
+           MOBILE RESPONSIVENESS
+        ================================= */
+        @media (max-width: 768px) {
+            .header {
+                top: 15px;
+                padding: 10px 15px;
+                border-radius: 15px;
+            }
+
+            .brand-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+                border-radius: 10px;
+            }
+
+            .brand-title { font-size: 14px; }
+            .brand-subtitle { font-size: 8px; }
+
+            .date {
+                padding: 8px 12px;
+                font-size: 10px;
+            }
+
+            .hero { top: 18%; width: 95%; }
+            .hero h1 { font-size: clamp(40px, 12vw, 60px); }
+
+            .subtitle {
+                font-size: 14px;
+                margin-top: 20px;
+                padding: 0 10px;
+            }
+
+            .open-button {
+                padding: 16px 30px;
+                font-size: 14px;
+                margin-top: 30px;
+            }
+
+            .moon {
+                width: 70px;
+                height: 70px;
+                right: 5%;
+                top: 10%;
+            }
+
+            .train-scene {
+                height: clamp(180px, 34vh, 300px);
+            }
+
+            .card {
+                padding: 40px 25px;
+                border-radius: 20px;
+            }
+
+            .card h2 { font-size: 30px; }
+            .card p { font-size: 15px; }
+            .final { font-size: 18px; }
+
+            .close {
+                top: 15px;
+                right: 15px;
+                width: 36px;
+                height: 36px;
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- AUDIO -->
+<audio id="festiveSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_29fb665d9c.mp3?filename=tada-fanfare-a-6313.mp3" preload="auto"></audio>
+
+<div class="app">
+
+    <!-- Sky Glow -->
+    <div class="sky-glow"></div>
+
+    <!-- Stars -->
+    <div class="stars" id="stars"></div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="brand">
+            <div class="brand-icon">🚆</div>
+            <div class="brand-text">
+                <div class="brand-title">MUSTAQILLIK</div>
+                <div class="brand-subtitle">EKSPRESSI</div>
+            </div>
+        </div>
+        <div class="date">🇺🇿 1 SENTYABR</div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="badge">🇺🇿 O'zbekiston Mustaqilligi</div>
+
+        <h1>
+            Mustaqillik
+            <span>bayrami muborak!</span>
+        </h1>
+
+        <p class="subtitle">
+            Temiryo'lchilarimizga mustahkam sog'liq, xonadonlariga tinchlik,
+            farovonlik va mashaqqatli mehnatlarida omad tilaymiz.
+        </p>
+
+        <button class="open-button" id="openButton">
+            🎁 &nbsp; Tabrikni ochish
+        </button>
+    </section>
+
+    <!-- SCENERY -->
+    <div class="moon"></div>
+    <div class="mountains"></div>
+
+    <!-- TRAIN VIDEO (haqiqiy lokomotiv videosi) -->
+    <div class="train-scene" aria-hidden="true">
+        <video id="trainVideo" autoplay muted loop playsinline preload="auto" disablepictureinpicture>
+            <source src="public/train.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- GOLD PARTICLES -->
+    <div class="particle" style="left:15%; top:30%; --duration: 4s;"></div>
+    <div class="particle" style="left:25%; top:45%; --duration: 6s; animation-delay:1s;"></div>
+    <div class="particle" style="left:80%; top:35%; --duration: 5s; animation-delay:2s;"></div>
+    <div class="particle" style="left:88%; top:50%; --duration: 7s; animation-delay:0.5s;"></div>
+    <div class="particle" style="left:65%; top:25%; --duration: 4.5s; animation-delay:1.5s;"></div>
+    <div class="particle" style="left:10%; top:60%; --duration: 5.5s; animation-delay:2.5s;"></div>
+    <div class="particle" style="left:95%; top:70%; --duration: 6.5s; animation-delay:0.8s;"></div>
+
+    <!-- GREETING MODAL -->
+    <div class="modal" id="modal">
+        <div class="card">
+            <button class="close" id="closeButton" aria-label="Yopish">&times;</button>
+            <div class="flag">🚆</div>
+            <h2>Bayram muborak!</h2>
+            <div class="gold-line"></div>
+
+            <p><strong>Aziz temiryo'lchilar!</strong></p>
+
+            <p>
+                Sizlarni jonajon Vatanimiz — O'zbekiston Respublikasi
+                Mustaqilligining bayrami bilan chin qalbdan muborakbod etaman!
+            </p>
+
+            <p>
+                Xonadonlaringizga tinchlik-xotirjamlik, qalblaringizga quvonch,
+                mashaqqatli va sharafli mehnatingizga omad, yo'llaringizga esa doimo ravonlik tilaymiz.
+            </p>
+
+            <strong class="final">Mustaqilligimiz abadiy bo'lsin!</strong>
+
+            <div class="signature">
+                <span class="signature-note">Samimiy tilaklar bilan,</span><br>
+                <span class="signature-name">Abduvaliyev Xurshid 🌟</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONFETTI CONTAINER -->
+    <div id="confetti"></div>
+</div>
+
+<script>
+    /* ===================================
+       STARS GENERATOR
+    =================================== */
+    const starsContainer = document.getElementById("stars");
+    for (let i = 0; i < 120; i++) {
+        const star = document.createElement("div");
+        star.className = "star";
+        star.style.left = Math.random() * 100 + "%";
+        star.style.top = Math.random() * 70 + "%";
+        star.style.setProperty('--duration', (Math.random() * 3 + 1) + 's');
+        star.style.animationDelay = Math.random() * 5 + "s";
+        star.style.opacity = Math.random();
+        if (Math.random() > 0.9) {
+            star.style.width = "3px";
+            star.style.height = "3px";
+        }
+        starsContainer.appendChild(star);
+    }
+
+    /* ===================================
+       TRAIN VIDEO LOGIC
+       - Autoplay bloklansa, birinchi bosishda qayta urinadi
+       - Tab yashiringanda pauza (batareya tejash)
+       - Reduced-motion sozlamasi hurmat qilinadi
+    =================================== */
+    const trainVideo = document.getElementById("trainVideo");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    function playTrainVideo() {
+        if (reduceMotion.matches) return;
+        trainVideo.play().catch(() => {
+            const resume = () => trainVideo.play().catch(() => {});
+            window.addEventListener("pointerdown", resume, { once: true });
+            window.addEventListener("keydown", resume, { once: true });
+        });
+    }
+
+    if (reduceMotion.matches) {
+        trainVideo.removeAttribute("autoplay");
+        trainVideo.pause();
+    } else {
+        playTrainVideo();
+    }
+
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            trainVideo.pause();
+        } else {
+            playTrainVideo();
+        }
+    });
+
+    /* ===================================
+       MODAL & AUDIO LOGIC
+    =================================== */
+    const openButton = document.getElementById("openButton");
+    const closeButton = document.getElementById("closeButton");
+    const modal = document.getElementById("modal");
+    const festiveSound = document.getElementById("festiveSound");
+
+    const openModal = () => {
+        modal.classList.add("active");
+        createConfetti();
+        if (festiveSound) {
+            festiveSound.currentTime = 0;
+            festiveSound.play().catch(e => console.warn("Ovoz ijrosida xatolik:", e));
+        }
+    };
+
+    const closeModal = () => {
+        modal.classList.remove("active");
+        if (festiveSound) {
+            festiveSound.pause();
+        }
+    };
+
+    openButton.addEventListener("click", openModal);
+    closeButton.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", (event) => {
+        if (event.target === modal) closeModal();
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && modal.classList.contains("active")) {
+            closeModal();
+        }
+    });
+
+    /* ===================================
+       CONFETTI GENERATOR
+    =================================== */
+    function createConfetti() {
+        const container = document.getElementById("confetti");
+        container.innerHTML = "";
+
+        const colors = ["#ffffff", "#00a9e0", "#1eb53a", "#d62828", "#ffd700", "#f4d276", "#ffb347"];
+
+        for (let i = 0; i < 180; i++) {
+            const piece = document.createElement("div");
+            piece.className = "confetti-piece";
+            piece.style.left = Math.random() * 100 + "vw";
+            piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+            const width = Math.random() * 8 + 6;
+            piece.style.width = width + "px";
+            piece.style.height = (width * 1.5) + "px";
+
+            piece.style.animationDelay = (Math.random() * 1.5) + "s";
+            piece.style.animationDuration = (Math.random() * 2.5 + 2.5) + "s";
+
+            if (Math.random() > 0.7) {
+                piece.style.borderRadius = "50%";
+            }
+
+            container.appendChild(piece);
+        }
+
+        setTimeout(() => {
+            container.innerHTML = "";
+        }, 6000);
+    }
+</script>
+
+</body>
+</html>
