@@ -52,7 +52,7 @@ export default function GreetingModal({ open, onClose }: Props) {
         <div className="card-emblem" aria-hidden="true">
           🚆
         </div>
-        <h2 id="greeting-title">Bayram muborak!</h2>
+        <h2 id="greeting-title">Mustaqillik bayrami muborak!</h2>
         <div className="gold-line" />
 
         <p>
