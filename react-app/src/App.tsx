@@ -63,14 +63,14 @@ function App() {
           <span>bayrami muborak!</span>
         </h1>
 
+        <button type="button" className="open-button" onClick={openModal}>
+          🎁 &nbsp; Tabrikni ochish
+        </button>
+
         <p className="subtitle">
           Temiryo'lchilarimizga mustahkam sog'liq, xonadonlariga tinchlik,
           farovonlik va mashaqqatli mehnatlarida omad tilaymiz.
         </p>
-
-        <button type="button" className="open-button" onClick={openModal}>
-          🎁 &nbsp; Tabrikni ochish
-        </button>
       </section>
 
       <div className="moon" aria-hidden="true" />

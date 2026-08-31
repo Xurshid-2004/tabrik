@@ -190,7 +190,7 @@
 }
 
 .subtitle {
-  margin-top: 25px;
+  margin-top: 28px;
   color: rgba(255, 255, 255, 0.75);
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 0, 0, 0.6);
   font-size: 18px;
@@ -199,7 +199,7 @@
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
-  animation: fadeUp 1s ease 0.8s backwards;
+  animation: fadeUp 1s ease 1s backwards;
 }
 
 /* ================================
@@ -207,7 +207,7 @@
 ================================= */
 .open-button {
   position: relative;
-  margin-top: 40px;
+  margin-top: 30px;
   padding: 18px 44px;
   min-height: 52px;
   border: none;
@@ -224,7 +224,7 @@
   box-shadow: 0 15px 35px rgba(255, 140, 92, 0.35), inset 0 2px 0 rgba(255, 255, 255, 0.45);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   animation:
-    fadeUp 1s ease 1s backwards,
+    fadeUp 1s ease 0.8s backwards,
     buttonPulse 3s infinite 2s,
     gradientFlow 6s ease-in-out infinite;
   overflow: hidden;
@@ -704,7 +704,7 @@
   .open-button {
     padding: 16px 30px;
     font-size: 14px;
-    margin-top: 30px;
+    margin-top: 22px;
   }
 
   .moon {
